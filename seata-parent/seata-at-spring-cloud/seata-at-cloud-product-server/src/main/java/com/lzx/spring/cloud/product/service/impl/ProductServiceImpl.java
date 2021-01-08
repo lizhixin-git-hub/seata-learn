@@ -2,6 +2,7 @@ package com.lzx.spring.cloud.product.service.impl;
 
 import com.lzx.spring.cloud.product.dao.ProductDao;
 import com.lzx.spring.cloud.product.service.ProductService;
+import io.seata.core.context.RootContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional // 开启新事物
+    // 开启新事物
+    @Transactional
     public void reduceStock(Long productId, Integer amount) throws Exception {
-        //logger.info("[reduceStock] 当前 XID: {}", RootContext.getXID());
+        logger.info("[reduceStock] 当前 XID: {}", RootContext.getXID());
 
         // 检查库存
         checkStock(productId, amount);

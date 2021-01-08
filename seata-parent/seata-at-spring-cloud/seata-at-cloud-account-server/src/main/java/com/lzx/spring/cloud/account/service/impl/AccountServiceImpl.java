@@ -2,6 +2,7 @@ package com.lzx.spring.cloud.account.service.impl;
 
 import com.lzx.spring.cloud.account.dao.AccountDao;
 import com.lzx.spring.cloud.account.service.AccountService;
+import io.seata.core.context.RootContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
     // 开启新事物
     @Transactional
     public void reduceBalance(Long userId, Integer price) throws Exception {
-        //logger.info("[reduceBalance] 当前 XID: {}", RootContext.getXID());
+        logger.info("[reduceBalance] 当前 XID: {}", RootContext.getXID());
 
         // 检查余额
         checkBalance(userId, price);

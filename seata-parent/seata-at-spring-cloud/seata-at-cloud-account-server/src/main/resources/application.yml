@@ -26,6 +26,26 @@ logging:
     com:
       lzx: info
 
+seata:
+  # Seata 应用编号，默认为 ${spring.application.name}
+  application-id: ${spring.application.name}
+  # Seata 事务组编号，用于 TC 集群名
+  tx-service-group: ${spring.application.name}-group
+  # Seata 服务配置项，对应 ServiceProperties 类
+  service:
+    # 虚拟组和分组的映射
+    vgroup-mapping:
+      spring-cloud-account-server-group: default
+  # 第一种方式，注册中心连tc，Seata 注册中心配置项，对应 RegistryProperties 类
+  registry:
+    type: eureka # 注册中心类型，默认为 file
+    eureka:
+      application: default
+      service-url: http://127.0.0.1:8080/eureka
+      # 第二种方式，分组和 Seata 服务的映射（直接连tc）
+      #grouplist:
+      #default: 106.53.217.86:8091
+
 # mybatis
 mybatis-plus:
   global-config:
