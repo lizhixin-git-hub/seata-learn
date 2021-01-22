@@ -14,6 +14,8 @@
         <module>seata-at-httpclient</module>
         <module>seata-at-dubbo</module>
         <module>seata-at-spring-cloud</module>
+        <module>hmily-tcc-spring-cloud</module>
+        <module>hmily-tcc-spring-cloud/hmily-tcc-cloud-bank2-server</module>
     </modules>
 
     <properties>

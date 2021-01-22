@@ -1,0 +1,35 @@
+hmily:
+  server:
+    #配置文件读取方式，本地或配置中心
+    configMode: local
+    appName: bank2-sc
+  #如果server.configMode eq local 的时候才会读取到这里的配置信息.
+  config:
+    appName: bank2-sc
+    #数据保存序列化方式  spi扩展支持 java kryo，hessian protostuff 推荐使用kroy,在测试中表现为:kroy>hessian>protostuff>jdk
+    serializer: kryo
+    #定时任务延迟时间（单位是秒，默认120。这个参数只是要大于你的rpc调用的超时时间设置
+    recoverDelayTime: 30
+    #最大重复次数，默认3次。当你的服务down机，定时任务会执行retryMax次数去执行你的cancel还是confrim
+    retryMax: 10
+    #存储支持
+    repository: mysql
+    #调度延迟时间，新版本中已修改
+    #scheduleDelay: 30
+    #调度最大线程数
+    #scheduleThreadMax: 10
+    #事务发起方
+    #started: true
+
+#事务记录，存储于数据库，初始加载文件为HmilyDatabaseConfig类
+repository:
+  database:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://106.53.217.86:3306/hmily?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: Lzx1922026241@
+    maxActive: 20
+    minIdle: 10
+    connectionTimeout: 30000
+    idleTimeout: 600000
+    maxLifetime: 1800000
