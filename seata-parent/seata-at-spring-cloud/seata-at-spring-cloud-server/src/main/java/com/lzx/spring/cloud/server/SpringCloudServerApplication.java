@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
+ * 快速入门路径：https://seata.io/zh-cn/blog/seata-quick-start.html
  * http://www.iocoder.cn/Spring-Cloud-Alibaba/Seata/?self
  */
 @SpringBootApplication
